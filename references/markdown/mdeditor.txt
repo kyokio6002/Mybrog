@@ -1,0 +1,15 @@
+mdeditorの参考文献
+github:https://github.com/pylixm/django-mdeditor/blob/master/mdeditor_demo_app/templates/show.html
+
+【Django】Markdownエディタを実装する方法【簡単】
+(https://yuki.world/django-markdown-implement/)
+
+error:
+templateにも綺麗にmarkdownを適用するにはmdeditorのcss,jsを適応させて、さらにscriptで適応させるタグのidを記入しないといけない
+
+
+django-mdeditorがtemplateで綺麗に表示されない
+(https://teratail.com/questions/325402)
+
+How to render the markdown content in the front-end using django-mdeditor?
+(https://stackoverflow.com/questions/58892098/how-to-render-the-markdown-content-in-the-front-end-using-django-mdeditor)

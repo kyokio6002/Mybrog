@@ -1,0 +1,4 @@
+staticの参考文献
+
+Djangoにおける静的ファイル(static file)の取り扱い
+(https://qiita.com/saira/items/a1c565c4a2eace268a07)

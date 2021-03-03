@@ -1,0 +1,41 @@
+{% extends "article/base.html" %}
+{% load static %}
+
+{% block add_css %}
+<link rel="stylesheet" media="all" href="{% static "article/css/index.css" %}">
+{% endblock %}
+
+{% block content %}
+
+<form method="get" action="{% url 'article:index' %}" class="ui form">
+    <div class="ui stacked segment">
+        <div class="field">
+            <div class="ui input">
+                <input type="text" name="keyword" placeholder="キーワード" value="{{ keyword|default:'' }}">
+            </div>
+        </div>
+        <button type="submit" class="ui fluid teal submit button">検索</button>
+    </div>
+</form>
+{% if keyword %}
+<p>{{keyword}}</p>
+{% else %}
+<p>keywordなし</p>
+{% endif %}
+<p>{{ user.username }}{% if user.is_staff %}→staff{% endif %}</p>
+
+
+<div class="container">
+  {% for article in articles  %}
+  <div class="article_card">
+    <a href="{% url 'article:detail' article.id %}">
+      <img src="{% static "article/images/no-image.jpg" %}" alt>
+    </a>
+    <h2>{{ article.title }}</h2>
+    <p class="article_text">{{ article.description }}</p>
+    <p class="article_date">{{ article.creat_at|date:"Y年m月d日" }}{% if not article.creat_at %}不明{% endif %}</p>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

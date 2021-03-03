@@ -1,0 +1,11 @@
+markdownxの参考文献
+
+DjangoでMarkdownを実装する
+(https://qiita.com/__init__/items/006291945121342ea946)
+
+django-markdownxの紹介
+(https://blog.narito.ninja/detail/102)
+
+DjangoでMarkdown(マークダウン)を5分で導入する方法
+(https://developer.yukimonkey.com/article/20200215/)
+

@@ -1,0 +1,16 @@
+.container{
+  background-color: #fff;
+}
+
+.container h2{
+  text-align:left;
+}
+
+.container .title{
+  text-align: center;
+	font-size: 40px;
+  font-family: 'Josefin Sans', 'Noto Sans JP',serif;
+	margin-bottom: 20px;
+	font-weight:normal;
+}
+

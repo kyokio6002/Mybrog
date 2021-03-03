@@ -1,0 +1,71 @@
+{% extends "article/base.html" %}
+{% load static %}
+
+{% block add_css %}
+<link rel="stylesheet" media="all" href="{% static "article/css/detail.css" %}">
+
+<link href="{% static "mdeditor/css/editormd.min.css" %}" rel="stylesheet">
+<link href="{% static "mdeditor/css/editormd.preview.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+<form method="get" action="{% url 'article:index' %}" class="ui form">
+    <div class="ui stacked segment">
+        <div class="field">
+            <div class="ui input">
+                <input type="text" name="keyword" placeholder="キーワード" value="{{ keyword|default:'' }}">
+            </div>
+        </div>
+        <button type="submit" class="ui fluid teal submit button">検索</button>
+    </div>
+</form>
+{% if keyword %}
+<p>{{keyword}}</p>
+{% else %}
+<p>keywordなし</p>
+{% endif %}
+<p>{{ user.username }}{% if user.is_staff %}→staff{% endif %}</p>
+
+
+<div class="container">
+  <div class="article_page">
+    <h2 class='title'>{{ article.title }}</h2>
+    <p class='descriptiom'>{{ article.description }}</p>
+    <p class='contents'>{{ article.formatted_markdown|safe }}</p>
+    {{form.media}}
+    {{form.as_p}}
+    {{ article.media }}
+    <div id='contents'>{{ article.markdown|safe }}</div>
+    <p class='creat_at'>{{ article.creat_at }}</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block add_js %}
+  <script src="{% static "mdeditor/js/jquery.min.js" %}"></script>
+  <script src="{% static "mdeditor/js/editormd.min.js" %}"></script>
+  <script src="{% static "mdeditor/js/lib/marked.min.js" %}"></script>
+  <script src="{% static "mdeditor/js/lib/prettify.min.js" %}"></script>
+  <script src="{% static "mdeditor/js/lib/raphael.min.js" %}"></script>
+  <script src="{% static "mdeditor/js/lib/underscore.min.js" %}"></script>
+  <script src="{% static "mdeditor/js/lib/sequence-diagram.min.js" %}"></script>
+  <script src="{% static "mdeditor/js/lib/flowchart.min.js" %}"></script>
+  <script src="{% static "mdeditor/js/lib/jquery.flowchart.min.js" %}"></script>
+<script>
+  $(function () {
+      editormd.markdownToHTML("contents", {
+          emoji           : true,
+          taskList        : true,
+          tex             : true, 
+          flowChart       : true,
+          sequenceDiagram : true,
+      });
+      $(".reference-link").each(function (i,obj) {
+        console.log(obj)
+      })
+  })
+</script>
+{% endblock %}
+add_markdownCSS

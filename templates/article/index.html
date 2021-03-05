@@ -26,7 +26,7 @@
 
 
 <div class="container">
-  {% for article in articles  %}
+  {% for article in articles %}
   <div class="article_card">
     <a href="{% url 'article:detail' article.id %}">
       <img src="{% static "article/images/no-image.jpg" %}" alt>
@@ -37,5 +37,6 @@
   </div>
   {% endfor %}
 </div>
+<div>{% include "article/tools/pagenation.html" %}</div>
 
 {% endblock %}

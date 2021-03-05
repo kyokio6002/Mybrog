@@ -27,3 +27,12 @@ class Article(models.Model):
             'markdown.extensions.toc',
             'markdown.extensions.tables'])
 
+
+class Comment(models.Model):
+    article = models.ForeignKey('Article', on_delete=True)
+    author = models.CharField(max_length=50)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']

@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse, get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.views.generic import View, ListView
+from django.views.generic.edit import CreateView
 from django.db.models import Q
-from .models import Article
+
+from .models import Article, Comment
 # Create your views here.
 
 
@@ -36,10 +39,11 @@ index = IndexView.as_view()
 
 class DetailView(LoginRequiredMixin, View):
     def get(self, request, article_id, *args, ** kwargs):
-        queryset = Article.objects.get(pk=article_id)
-
+        article = Article.objects.get(pk=article_id)
+        comments = Comment.objects.filter(article=article)
         context = {
-            'article': queryset,
+            'article': article,
+            'comments': comments,
         }
 
         return render(request, 'article/detail.html', context)

@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView
 from django.db.models import Q
 
 from .models import Article, Comment
+from .forms import CommentForm, ReplyForm
 # Create your views here.
 
 
@@ -43,9 +44,44 @@ class DetailView(LoginRequiredMixin, View):
         article = Article.objects.get(pk=article_id)
         context = {
             'article': article,
+            'commnet_form': CommentForm(),
+            'reply_form': ReplyForm()
         }
 
         return render(request, 'article/detail.html', context)
 
 
 detail = DetailView.as_view()
+
+
+class SaveComment(View):
+    def post(self, request, article_id, *args, **kwargs):
+        form = CommentForm(request.POST)
+        article = Article.objects.get(pk=article_id)
+        comment = form.save(commit=False)
+        comment.article = article
+        comment.save()
+        article_id = article_id
+
+        return redirect('article:detail', article_id=article_id)
+
+
+save_comment = SaveComment.as_view()
+
+
+class SaveReply(View):
+    def post(self, request, comment_id, *args, **kwargs):
+        form = ReplyForm(request.POST)
+        comment = Comment.objects.get(pk=comment_id)
+        reply = form.save(commit=False)
+        reply.comment = comment
+        reply.save()
+        article_id = comment.article.id
+
+        return redirect('article:detail', article_id=article_id)
+
+
+save_reply = SaveReply.as_view()
+
+
+

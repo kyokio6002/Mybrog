@@ -50,13 +50,26 @@
 </div>
 
 <!-- コメント部分-->
+<form method="post" action="{% url 'article:comment' article.id %}">
+  {% csrf_token %}
+  {{ commnet_form.as_p }}
+  <input type="submit">
+</form>
 {% for comment in article.comments.all %}
   <p>{{comment.author}}</p>
   <p>{{comment.text}}</p>
   <p>{{comment.created_at}}</p>
+  <hr>
   {% for reply in comment.replies.all %}
     <p>  {{reply}}</p>
+    <hr>
   {% endfor %}
+  <form method="post" action="{% url 'article:reply' comment.id %}">
+    {% csrf_token %}
+    {{ reply_form.as_p }}
+    <input type="submit">
+  </form>
+
 {% endfor %}
 
 

@@ -29,10 +29,32 @@ class Article(models.Model):
 
 
 class Comment(models.Model):
-    article = models.ForeignKey('Article', on_delete=True)
+    article = models.ForeignKey(
+        'Article',
+        on_delete=True,
+        related_name='comments')
     author = models.CharField(max_length=50)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-created_at']
+
+    def __str__(self):
+        return str(self.text)
+
+
+class Reply(models.Model):
+    comment = models.ForeignKey(
+        'Comment',
+        on_delete=True,
+        related_name='replies')
+    author = models.CharField(max_length=50)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return str(self.text)

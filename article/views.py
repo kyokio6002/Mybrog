@@ -37,13 +37,12 @@ index = IndexView.as_view()
 # 
 # index = IndexView.as_view()
 
+
 class DetailView(LoginRequiredMixin, View):
     def get(self, request, article_id, *args, ** kwargs):
         article = Article.objects.get(pk=article_id)
-        comments = Comment.objects.filter(article=article)
         context = {
             'article': article,
-            'comments': comments,
         }
 
         return render(request, 'article/detail.html', context)

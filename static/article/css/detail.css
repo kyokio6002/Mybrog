@@ -1,12 +1,8 @@
 .container{
   width: 60%;
   position: relative;
-  left: 16.5%;
+  left: 20%;
   background-color: #fff;
-}
-
-.container .desctiption{
-  padding: 20px;
 }
 
 .title{
@@ -25,3 +21,16 @@
 	font-weight:normal;
 }
 
+.comment{
+  width: 60%;
+  position: relative;
+  left: 20%;
+  background-color: #fff;
+  margin-top:20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#contents{
+  box-sizing: border-box;
+}

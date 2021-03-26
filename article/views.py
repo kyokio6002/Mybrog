@@ -10,10 +10,10 @@ from .forms import CommentForm, ReplyForm
 # Create your views here.
 
 
-class IndexView(LoginRequiredMixin, ListView):
+class IndexView(ListView):
     template_name = 'article/index.html'
     context_object_name = 'articles'
-    paginate_by = 4
+    paginate_by = 8
     queryset = Article.objects.all().filter(is_public=True)
 
 
@@ -39,7 +39,7 @@ index = IndexView.as_view()
 # index = IndexView.as_view()
 
 
-class DetailView(LoginRequiredMixin, View):
+class DetailView(View):
     def get(self, request, article_id, *args, ** kwargs):
         article = Article.objects.get(pk=article_id)
         context = {

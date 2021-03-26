@@ -12,14 +12,19 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   align-content: flex-start;
+  margin-bottom: 10px;
 }
 
 .article_card{
   width: 25%;
   padding: 5px;
+  margin-bottom: 10px;
   box-sizing: border-box;div
   background-clip: content-box;
-  background: #ffa;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px #5d627b;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 
 .article_card img{

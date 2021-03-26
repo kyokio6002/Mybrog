@@ -43,27 +43,29 @@
 </div>
 
 <!-- コメント部分 -->
-<form method="post" action="{% url 'article:comment' article.id %}">
-  {% csrf_token %}
-  {{ commnet_form.as_p }}
-  <input type="submit">
-</form>
-{% for comment in article.comments.all %}
-  <hr>
-  <p>{{comment.author}}/{{comment.created_at}}</p>
-  <p>{{comment.text}}</p>
-  {% for reply in comment.replies.all %}
-    <p>----------------</p>
-    <p>{{reply}}</p>
-  {% endfor %}
-  <form method="post" action="{% url 'article:reply' comment.id %}">
+<div class='comment'>
+  <form method="post" action="{% url 'article:comment' article.id %}">
     {% csrf_token %}
-    {{ reply_form.as_p }}
+    {{ commnet_form.as_p }}
     <input type="submit">
   </form>
-
-{% endfor %}
-{% endblock %}
+  {% for comment in article.comments.all %}
+    <hr>
+    <p>{{comment.author}}/{{comment.created_at}}</p>
+    <p>{{comment.text}}</p>
+    {% for reply in comment.replies.all %}
+      <p>----------------</p>
+      <p>{{reply.author}}:{{reply}}</p>
+    {% endfor %}
+    <form method="post" action="{% url 'article:reply' comment.id %}">
+      {% csrf_token %}
+      {{ reply_form.as_p }}
+      <input type="submit">
+    </form>
+  
+  {% endfor %}
+  {% endblock %}
+</div>
 
 
 <!-- markdown -->

@@ -12,6 +12,17 @@
 <link rel="icon" href="{% static "article/images/favicon.ico" %}">
 
 {% block add_css %}{% endblock %}
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ 
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']], 
+      displayMath: [['$$','$$'], ['\\[','\\]']], 
+      processEscapes: true 
+    }
+  }); 
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 
 <body>
@@ -31,24 +42,10 @@
 	</div>
 </header>
 
-<!-- VISION -->
-<section id="sec01">
-	<header>
-		<h2>VISION</h2>
-	</header>
-	<div class="vision">
-    <h2>勉強したことすぐ忘れちゃうからメモっとく.</h2>
-  </div>
-</section>
-<!-- // VISION -->
 
 <!-- CONTENTS -->
-
 <section id="contents_sec">
-  <header>
-    <h2>CONTENTS</h2>
-  </header>
-  {% block content %}{% endblock %} 
+  {% block content %}{% endblock %}
 </section>
 
 

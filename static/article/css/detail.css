@@ -1,5 +1,16 @@
 .container{
+  width: 60%;
+  position: relative;
+  left: 16.5%;
   background-color: #fff;
+}
+
+.container .desctiption{
+  padding: 20px;
+}
+
+.title{
+  margin: 20px;
 }
 
 .container h2{

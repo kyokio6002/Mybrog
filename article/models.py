@@ -38,7 +38,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['created_at']
 
     def __str__(self):
         return str(self.text)
@@ -54,7 +54,7 @@ class Reply(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['created_at']  # replyは時系列で表示したい
 
     def __str__(self):
         return str(self.text)

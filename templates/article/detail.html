@@ -2,8 +2,6 @@
 {% load static %}
 
 
-
-
 {% block add_css %}
 <link rel="stylesheet" media="all" href="{% static "article/css/detail.css" %}">
 
@@ -14,10 +12,7 @@
 
 
 
-
-
 {% block content %}
-
 <form method="get" action="{% url 'article:index' %}" class="ui form">
     <div class="ui stacked segment">
         <div class="field">
@@ -33,13 +28,11 @@
 {% else %}
 <p>keywordなし</p>
 {% endif %}
-<p>{{ user.username }}{% if user.is_staff %}→staff{% endif %}</p>
-
+<p>{{ user.username }}{% if user.is_staff %}(staff){% endif %}</p>
 
 <div class="container">
   <div class="article_page">
     <h2 class='title'>{{ article.title }}</h2>
-    <p class='descriptiom'>{{ article.description }}</p>
     <p class='contents'>{{ article.formatted_markdown|safe }}</p>
     {{form.media}}
     {{form.as_p}}
@@ -49,20 +42,19 @@
   </div>
 </div>
 
-<!-- コメント部分-->
+<!-- コメント部分 -->
 <form method="post" action="{% url 'article:comment' article.id %}">
   {% csrf_token %}
   {{ commnet_form.as_p }}
   <input type="submit">
 </form>
 {% for comment in article.comments.all %}
-  <p>{{comment.author}}</p>
-  <p>{{comment.text}}</p>
-  <p>{{comment.created_at}}</p>
   <hr>
+  <p>{{comment.author}}/{{comment.created_at}}</p>
+  <p>{{comment.text}}</p>
   {% for reply in comment.replies.all %}
-    <p>  {{reply}}</p>
-    <hr>
+    <p>----------------</p>
+    <p>{{reply}}</p>
   {% endfor %}
   <form method="post" action="{% url 'article:reply' comment.id %}">
     {% csrf_token %}
@@ -71,16 +63,10 @@
   </form>
 
 {% endfor %}
-
-
 {% endblock %}
 
 
-
-
-
-
-
+<!-- markdown -->
 {% block add_js %}
   <script src="{% static "mdeditor/js/jquery.min.js" %}"></script>
   <script src="{% static "mdeditor/js/editormd.min.js" %}"></script>
@@ -106,4 +92,3 @@
   })
 </script>
 {% endblock %}
-add_markdownCSS

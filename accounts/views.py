@@ -10,6 +10,7 @@ from django.views import View
 from .forms import LoginForm, RegisterForm, ProfileForm
 
 # Create your views here.
+
 logger = logging.getLogger(__name__)
 
 

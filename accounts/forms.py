@@ -21,7 +21,7 @@ class RegisterForm(forms.ModelForm):
         # 
         widgets = {
             'username': forms.TextInput(attrs={'placeholder': 'ユーザー名'}),
-            'password': forms.PasswordInput(attrs={'placeholder': 'パス位ワード'}),
+            'password': forms.PasswordInput(attrs={'placeholder': 'パスワード'}),
         }
 
     # 確認用パスワードのfieldを追加
@@ -80,8 +80,8 @@ class LoginForm(forms.Form):
         widget=forms.PasswordInput(attrs={'placeholder': 'パスワード'},
                                    render_value=True))
 
-    def __init__(self, *args, ** kwargs):
-        super.__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.user_cache = None
     
     def clean_password(self):

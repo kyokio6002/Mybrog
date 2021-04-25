@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+
     # admin(default)
     path('admin/', admin.site.urls),
 
@@ -28,7 +29,7 @@ urlpatterns = [
     path('article/', include('article.urls')),
     
     # 3rd-party
-    path('mdeditor/', include('mdeditor.urls')),
+    # path('mdeditor/', include('mdeditor.urls')),
 ]
 
 # markdownxのために記述

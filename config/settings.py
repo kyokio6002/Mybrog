@@ -24,6 +24,10 @@ PROJECT_NAME = os.path.basename(BASE_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
+# SECURITY WARNING: keep the secret key used in production secret!
+# use new one from local_setting.py
+# SECRET_KEY = 'z5ozo=g*b!aai^@gpteenta^bvw7#)id(knwafl0jt_wv*+y7v'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True

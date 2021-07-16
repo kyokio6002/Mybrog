@@ -1,4 +1,6 @@
 local_settings.py
+.DS_Store
+db.*
 __pycache__/
 collected_static
 *.pem

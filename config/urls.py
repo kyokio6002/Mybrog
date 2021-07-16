@@ -19,6 +19,8 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+import article
+
 urlpatterns = [
 
     # admin(default)
@@ -27,6 +29,7 @@ urlpatterns = [
     # myapp
     path('accounts/', include('accounts.urls')),
     path('article/', include('article.urls')),
+    path('', include('article.urls')),
 
     # 3rd-party
     # path('mdeditor/', include('mdeditor.urls')),

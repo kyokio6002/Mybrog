@@ -5,3 +5,4 @@ __pycache__/
 collected_static
 *.pem
 *.key
+*.swp

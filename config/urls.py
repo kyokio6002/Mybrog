@@ -26,7 +26,7 @@ urlpatterns = [
     # myapp
     path('accounts/', include('accounts.urls')),
     path('article/', include('article.urls')),
-    
+
     # 3rd-party
     path('mdeditor/', include('mdeditor.urls')),
 ]

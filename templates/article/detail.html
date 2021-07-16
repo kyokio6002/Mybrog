@@ -53,16 +53,18 @@
     <hr>
     <p>{{comment.author}}/{{comment.created_at}}</p>
     <p>{{comment.text}}</p>
-    {% for reply in comment.replies.all %}
+    <!-- adminのみ返信可能 -->
+    {% if user.is_staff %}
+      {% for reply in comment.replies.all %}
       <p>----------------</p>
       <p>{{reply.author}}:{{reply}}</p>
-    {% endfor %}
-    <form method="post" action="{% url 'article:reply' comment.id %}">
+      {% endfor %}
+      <form method="post" action="{% url 'article:reply' comment.id %}">
       {% csrf_token %}
       {{ reply_form.as_p }}
       <input type="submit">
     </form>
-  
+    {% endif %}
   {% endfor %}
   {% endblock %}
 </div>

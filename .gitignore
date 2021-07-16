@@ -1,6 +1,13 @@
 local_settings.py
+<<<<<<< HEAD
 __pycache__
 *.pem
 *.key
 .DS_Store
 db.sqlite3
+=======
+__pycache__/
+collected_static
+*.pem
+*.key
+>>>>>>> bfa4e2d6c5b62ba368c739f55f980c30b316a892

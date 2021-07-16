@@ -1,10 +1,13 @@
 {% extends "article/base.html" %}
 {% load static %}
 
+<!-- add css -->
 {% block add_css %}
 <link rel="stylesheet" media="all" href="{% static "article/css/index.css" %}">
 {% endblock %}
 
+
+<!-- content -->
 {% block content %}
 
 <form method="get" action="{% url 'article:index' %}" class="ui form">

@@ -11,6 +11,7 @@
 <script src="{% static "article/js/script.js" %}"></script>
 <link rel="icon" href="{% static "article/images/favicon.ico" %}">
 
+<!-- add css -->
 {% block add_css %}{% endblock %}
 
 <script type="text/x-mathjax-config">
@@ -28,18 +29,20 @@
 <body>
 
 <header id="header">
-  <script type="text/javascript">
-    const hour = new Date().getHours();
-    if(hour>=4 && hour<=18){
-      document.write('<img src="{% static "article/images/mainImg01.JPG" %}" alt="">')
-    }else{
-      document.write('<img src="{% static "article/images/mainImg02.JPG" %}" alt="">')
-    }
-  </script>
-	<div id="slogan">
-		<h1>kyokio</h1>
-		<h2>めんどくせぇ</h2>
-	</div>
+  <a href="{% url 'article:index' %}">
+    <script type="text/javascript">
+      const hour = new Date().getHours();
+      if(hour>=4 && hour<=18){
+        document.write('<img src="{% static "article/images/mainImg01.JPG" %}" alt="">')
+      }else{
+        document.write('<img src="{% static "article/images/mainImg02.JPG" %}" alt="">')
+      }
+    </script>
+    <div id="slogan">
+      <h1>kyokio</h1>
+      <h2>めんどくせぇ</h2>
+    </div>
+  </a>
 </header>
 
 

@@ -1,12 +1,5 @@
 /* article
 ------------------------------------------------------------*/
-#contents_sec{
-  width: 60%;
-  position: relative;
-  left: 20%;
-  background: #fff
-}
-
 .container{
   display: flex;
   justify-content: flex-start;

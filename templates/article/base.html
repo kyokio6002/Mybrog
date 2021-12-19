@@ -1,64 +1,62 @@
 <!doctype html>
 {% load static %}
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width">
-<title>KYOKIO COMPANY</title>
-<link rel="stylesheet" media="all" href="{% static "article/css/base.css" %}">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<script src="{% static "article/js/script.js" %}"></script>
-<link rel="icon" href="{% static "article/images/favicon.ico" %}">
-
-<!-- add css -->
-{% block add_css %}{% endblock %}
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({ 
-    tex2jax: {
-      inlineMath: [['$','$'], ['\\(','\\)']], 
-      displayMath: [['$$','$$'], ['\\[','\\]']], 
-      processEscapes: true 
-    }
-  }); 
-</script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-</head>
-
-<body>
-
-<header id="header">
-  <a href="{% url 'article:index' %}">
-    <script type="text/javascript">
-      const hour = new Date().getHours();
-      if(hour>=4 && hour<=18){
-        document.write('<img src="{% static "article/images/mainImg01.JPG" %}" alt="">')
-      }else{
-        document.write('<img src="{% static "article/images/mainImg02.JPG" %}" alt="">')
-      }
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <title>KYOKIO COMPANY</title>
+    <link rel="stylesheet" media="all" href="{% static "article/css/base.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="{% static "article/js/script.js" %}"></script>
+    <link rel="icon" href="{% static "article/images/favicon.ico" %}">
+    
+    <!-- add css -->
+    {% block add_css %}{% endblock %}
+    
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({ 
+        tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']], 
+          displayMath: [['$$','$$'], ['\\[','\\]']], 
+          processEscapes: true 
+        }
+      }); 
     </script>
-    <div id="slogan">
-      <h1>kyokio</h1>
-      <h2>めんどくせぇ</h2>
-    </div>
-  </a>
-</header>
-
-
-<!-- CONTENTS -->
-<section id="contents_sec">
-  <div class="main_contents">{% block main_contents%}{% endblock %}</div>
-  <div class="side_contents">{% block sise_contents %}{% endblock %}</div>
-</section>
-
-
-<footer id="footer">
-	Copyright(c) 20XX Sample Inc. All Rights Reserved. Design by <a href="" target="_blank">http://---.com</a>
-</footer>
-
-
-{% block add_js %}{% endblock %}
-</body>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  </head>
+  
+  <body>
+    <header id="header">
+      <a href="{% url 'article:index' %}">
+        <script type="text/javascript">
+          const hour = new Date().getHours();
+          if(hour>=4 && hour<=18){
+            document.write('<img src="{% static "article/images/mainImg01.JPG" %}" alt="">')
+          }else{
+            document.write('<img src="{% static "article/images/mainImg02.JPG" %}" alt="">')
+          }
+        </script>
+        <div id="slogan">
+          <h1>kyokio</h1>
+          <h2>めんどくせぇ</h2>
+        </div>
+      </a>
+    </header> 
+    
+    <!-- CONTENTS -->
+    <section id="contents_sec">
+      <div class="main_contents">{% block main_contents%}{% endblock %}</div>
+      <div class="side_contents">{% block side_contents %}{% endblock %}</div>
+    </section>
+    
+    
+    <footer id="footer">
+    	Copyright(c) 20XX Sample Inc. All Rights Reserved. Design by <a href="" target="_blank">http://---.com</a>
+    </footer>
+    
+    
+    {% block add_js %}{% endblock %}
+  </body>
 </html>
 
